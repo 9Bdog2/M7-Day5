@@ -27,32 +27,7 @@ class Album extends React.Component {
     this.props.getAlbum(albumId)
     console.log("props", this.props)
   }
-  /*   let headers = new Headers({
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-      "X-RapidAPI-Key": "222902beabmshb95a65b737cead6p1f3ac9jsn23ced94c0d20",
-    });
-
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/album/" + albumId,
-        {
-          method: "GET",
-          headers,
-        }
-      );
-
-      if (response.ok) {
-        let album = await response.json();
-        this.setState({
-          album,
-          songs: album.tracks.data,
-        });
-      }
-    } catch (exception) {
-      console.log(exception);
-    }
-  };
- */
+  
   render() {
     return (
       <div className="col-12 col-md-9 offset-md-3 mainPage">
@@ -92,7 +67,7 @@ class Album extends React.Component {
             <Row>
               <div className="col-md-10 mb-5" id="trackList">
                 { this.props.album.tracks.data.map((song) => (
-                  <Song track={song} key={song.id} />
+                  <Song track={song} key={song?.id} />
                 ))}
               </div>
             </Row>

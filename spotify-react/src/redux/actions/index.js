@@ -19,6 +19,7 @@ export const getAlbum = (albumId) => {
       if (response.ok) {
         console.log(response);
         const album = await response.json();
+        console.log("album", album);
 
         dispatch({
           type: GET_ALBUM,
