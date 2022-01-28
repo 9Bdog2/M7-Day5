@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const AlbumCard = ({ song }) => (
   <div className="col text-center" id={song.id}>
-    {console.log(song.id)}
+    {console.log(song)}
     <Link to={"/album/" + song.album.id}>
       <div>
         <img className="img-fluid" src={song.album.cover_medium} alt="1" />
