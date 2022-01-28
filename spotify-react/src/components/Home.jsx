@@ -40,7 +40,7 @@ class Home extends React.Component {
           headers: new Headers({
             "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
             "X-RapidAPI-Key":
-              "9d408f0366mshab3b0fd8e5ecdf7p1b09f2jsne682a1797fa0",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwYjA2MDRjZmY1ZjAwMTU5MGJkYjIiLCJpYXQiOjE2NDMzNjI2MTUsImV4cCI6MTY0NDU3MjIxNX0.QnrUCfhGek4L1xX6otQngMitdQLf-Mw2H2-21YJ5Gbs",
           }),
         }
       );
@@ -113,8 +113,8 @@ class Home extends React.Component {
               <div id="searchResults">
                 <h2>Search Results</h2>
                 <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
-                  {this.props.searchResults.map((song) => (
-                    <AlbumCard song={song} key={song.id} />
+                  {this.props.searchResults.map((song, i) => (
+                    <AlbumCard song={song} key={i} />
                   ))}
                 </Row>
               </div>
@@ -131,8 +131,8 @@ class Home extends React.Component {
                     className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
                     id="rockSection"
                   >
-                    {this.state.rockSongs.map((song) => (
-                      <AlbumCard song={song} key={song.id} />
+                    {this.state.rockSongs.map((song, i) => (
+                      <AlbumCard song={song} key={i} />
                     ))}
                   </Row>
                 </div>
@@ -146,8 +146,8 @@ class Home extends React.Component {
                     className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
                     id="popSection"
                   >
-                    {this.state.popSongs.map((song) => (
-                      <AlbumCard song={song} key={song.id} />
+                    {this.state.popSongs.map((song, i) => (
+                      <AlbumCard song={song} key={i} />
                     ))}
                   </Row>
                 </div>
@@ -161,8 +161,8 @@ class Home extends React.Component {
                     className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
                     id="hipHopSection"
                   >
-                    {this.state.hipHopSongs.map((song) => (
-                      <AlbumCard song={song} key={song.id} />
+                    {this.state.hipHopSongs.map((song, i) => (
+                      <AlbumCard song={song} key={i} />
                     ))}
                   </Row>
                 </div>
