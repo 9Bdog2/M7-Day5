@@ -16,15 +16,16 @@ export const initialState = {
   artists: {
     artistsSongs: [],
   }, */
-  albums: {
+  album: {
     albumsSongs: [],
+    errorCode: null,
   },
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const mainReducer = combineReducers({
-  albums: albumsReducer,
+  album: albumsReducer,
   /* artists: artistsReducer,
   likes: likesReducer,
   home: homeReducer, */

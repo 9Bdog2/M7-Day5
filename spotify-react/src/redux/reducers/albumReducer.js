@@ -1,10 +1,15 @@
 import { initialState } from "../store/index.js";
 
-export default function albumReducer(state = initialState.albums, action) {
+export default function albumReducer(state = initialState.album, action) {
   console.log(action, state);
   const { type, payload } = action;
   switch (type) {
     case "GET_ALBUM":
+      return {
+        ...state,
+        ...payload,
+      };
+    case "GET_ALBUM_ERROR":
       return {
         ...state,
         ...payload,
