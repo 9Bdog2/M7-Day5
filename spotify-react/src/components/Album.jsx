@@ -13,7 +13,7 @@ class Album extends React.Component {
 
     let headers = new Headers({
       "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-      "X-RapidAPI-Key": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWYzYzIzZjJlOTVjZTAwMTVlZWQ3NTYiLCJpYXQiOjE2NDMzNjQ5MjcsImV4cCI6MTY0NDU3NDUyN30.jeajiH9x-TF42L20DJ1qFxeV05sKTLxTUIRISBHzXV4",
+      "X-RapidAPI-Key": "222902beabmshb95a65b737cead6p1f3ac9jsn23ced94c0d20",
     });
 
     try {
