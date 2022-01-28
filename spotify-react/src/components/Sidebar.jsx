@@ -50,7 +50,7 @@ class Sidebar extends React.Component {
                   {this.props.location.pathname === "/" && (
                     <li>
                       <div className="input-group mt-3">
-                        <input
+                        {/* <input
                           type="text"
                           className="form-control mb-2"
                           id="searchField"
@@ -62,7 +62,7 @@ class Sidebar extends React.Component {
                               searchInput: event.currentTarget.value,
                             })
                           }
-                        />
+                        /> */}
                         <div
                           className="input-group-append"
                           style={{ marginBottom: "4%" }}
