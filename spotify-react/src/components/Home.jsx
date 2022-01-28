@@ -40,7 +40,7 @@ class Home extends React.Component {
           headers: new Headers({
             "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
             "X-RapidAPI-Key":
-              "9d408f0366mshab3b0fd8e5ecdf7p1b09f2jsne682a1797fa0",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwYjA2MDRjZmY1ZjAwMTU5MGJkYjIiLCJpYXQiOjE2NDMzNjI2MTUsImV4cCI6MTY0NDU3MjIxNX0.QnrUCfhGek4L1xX6otQngMitdQLf-Mw2H2-21YJ5Gbs",
           }),
         }
       );
