@@ -1,14 +1,18 @@
 import { initialState } from "../store";
-import { FETCH_SONGS } from "../actions";
+import { SET_SONGS } from "../actions";
 
 const homeReducer = (state = initialState.home.content, action) => {
-  const { type, payload } = action;
+  
+  const { type } = action;
 
   switch (type) {
-    case FETCH_SONGS:
+    case SET_SONGS:
       return {
         ...state,
-        content: payload,
+        content: {
+          ...state.content,
+          data: action.payload,
+        },
       };
     default:
       return state;

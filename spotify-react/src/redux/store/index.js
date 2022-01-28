@@ -24,7 +24,7 @@ export const initialState = {
   },
 };
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const mainReducer = combineReducers({
   albums: albumsReducer,
@@ -33,8 +33,10 @@ const mainReducer = combineReducers({
   home: homeReducer,
 });
 
-export default createStore(
+const configureStore = createStore(
   mainReducer,
   initialState,
   composeEnhancers(applyMiddleware(thunk))
 );
+
+export default configureStore;

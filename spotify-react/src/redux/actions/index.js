@@ -1,10 +1,10 @@
-export const FETCH_SONGS = "FETCH_SONGS";
+export const SET_SONGS = "SET_SONGS";
 
-export const getSongs = (artist) => {
+export const getSongsAction = (artist) => {
   return async (dispatch) => {
     try {
       let response = await fetch(
-        `https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`,
+        `https://strive-proxy.herokuapp.com/https://api.deezer.com/search?q=${artist}`,
         {
           method: "GET",
           headers: {
@@ -17,10 +17,9 @@ export const getSongs = (artist) => {
 
       let result = await response.json();
       let songs = result.data;
-      console.log(songs);
 
       dispatch({
-        type: FETCH_SONGS,
+        type: SET_SONGS,
         payload: songs,
       });
     } catch (err) {

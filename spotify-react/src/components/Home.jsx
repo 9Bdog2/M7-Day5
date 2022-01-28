@@ -2,14 +2,14 @@ import React from "react";
 import AlbumCard from "./AlbumCard";
 import { Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
-import { getSongs } from "../redux/actions";
+import { getSongsAction } from "../redux/actions";
 
 const mapStateToProps = (state) => ({
   home: state.home.content,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getSongs: () => dispatch(getSongs()),
+  getSongs: (artist) => dispatch(getSongsAction(artist)),
 });
 class Home extends React.Component {
   state = {
@@ -39,7 +39,7 @@ class Home extends React.Component {
 
   hipHopArtists = ["eminem", "snoopdogg", "lilwayne", "drake", "kanyewest"];
 
-  handleArtist = async (artistName, category) => {
+  /* handleArtist = async (artistName, category) => {
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
@@ -61,26 +61,24 @@ class Home extends React.Component {
     } catch (err) {
       console.log(err);
     }
-  };
+  }; */
 
-  componentDidMount = async () => {
-    this.props.getSongs();
-    
-
+  componentDidMount = async (artist) => {
+    this.props.getSongs(artist);
+    console.log(this.props.home);
     /* let rockRandomArtists = [];
     let popRandomArtists = [];
     let hipHopRandomArtists = [];
- */
 
-    /* while (rockRandomArtists.length < 4) {
+    while (rockRandomArtists.length < 4) {
       let artist =
-        this.rockArtists[Math.floor(Math.random() * this.rockArtists.length)];
+        this.props.home[Math.floor(Math.random() * this.props.home.length)];
       if (!rockRandomArtists.includes(artist)) {
         rockRandomArtists.push(artist);
       }
-    }
+    } */
 
-    while (popRandomArtists.length < 4) {
+    /* while (popRandomArtists.length < 4) {
       let artist =
         this.popArtists[Math.floor(Math.random() * this.popArtists.length)];
       if (!popRandomArtists.includes(artist)) {
@@ -96,12 +94,12 @@ class Home extends React.Component {
       if (!hipHopRandomArtists.includes(artist)) {
         hipHopRandomArtists.push(artist);
       }
-    }
+    } */
 
-    for (let j = 0; j < rockRandomArtists.length; j++)
-      await this.handleArtist(rockRandomArtists[j], "rockSongs");
+    /* for (let j = 0; j < rockRandomArtists.length; j++)
+      await this.props.home(rockRandomArtists[j], "rockSongs"); */
 
-    for (let k = 0; k < popRandomArtists.length; k++)
+    /* for (let k = 0; k < popRandomArtists.length; k++)
       await this.handleArtist(popRandomArtists[k], "popSongs");
 
     for (let l = 0; l < hipHopRandomArtists.length; l++)
