@@ -1,9 +1,9 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import albumReducer from "../reducers/albumReducer";
+import albumsReducer from "../reducers/albumReducer";
 
 export const initialState = {
-  /* likes: {
+  /*  likes: {
     likeSongs: [],
   },
   home: {
@@ -16,16 +16,15 @@ export const initialState = {
   artists: {
     artistsSongs: [],
   }, */
-  album: {
+  albums: {
     albumsSongs: [],
-    errorCode: null,
   },
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const mainReducer = combineReducers({
-  album: albumReducer,
+  albums: albumsReducer,
   /* artists: artistsReducer,
   likes: likesReducer,
   home: homeReducer, */
