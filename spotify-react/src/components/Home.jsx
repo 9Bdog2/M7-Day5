@@ -107,6 +107,7 @@ class Home extends React.Component {
   };
 
   render() {
+    console.log(this.props.home.data);
     return (
       <Col className="col-12 col-md-9 offset-md-3 mainPage">
         <Row>
@@ -142,7 +143,7 @@ class Home extends React.Component {
                     className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
                     id="rockSection"
                   >
-                    {this.state.rockSongs.map((song) => (
+                    {this.props.home.data.map((song) => (
                       <AlbumCard song={song} key={song?.id} />
                     ))}
                   </Row>
@@ -157,7 +158,7 @@ class Home extends React.Component {
                     className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
                     id="popSection"
                   >
-                    {this.state.popSongs.map((song) => (
+                    {this.props.home.data.map((song) => (
                       <AlbumCard song={song} key={song?.id} />
                     ))}
                   </Row>
@@ -172,7 +173,7 @@ class Home extends React.Component {
                     className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
                     id="hipHopSection"
                   >
-                    {this.state.hipHopSongs.map((song) => (
+                    {this.props.home.data.map((song) => (
                       <AlbumCard song={song} key={song?.id} />
                     ))}
                   </Row>
