@@ -1,75 +1,46 @@
 import React from "react";
 import AlbumCard from "./AlbumCard";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Spinner } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { connect } from "react-redux";
+import { getArtistSongs } from "../redux/actions";
 
-class Artist extends React.Component {
-  state = {
-    artist: {},
-    songs: [],
-  };
+const mapStateToProps = (state) => ({
+  artist: state.artists.artistsData,
+  songs: state.artists.artistsSongs,
+});
 
-  componentDidMount = async () => {
-    let artistId = this.props.match.params.id;
+const mapDispatchToProps = (dispatch) => ({
+  fetchArtistData: (artistId) => {
+    dispatch(getArtistSongs(artistId));
+  },
+});
 
-    let headers = new Headers({
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-      "X-RapidAPI-Key": "c74a0a086emshf55ffb8dbdcb59ap17a486jsnb83bb4d3e387",
-    });
+const Artist = ({ fetchArtistData, artist, songs }) => {
+  const params = useParams();
 
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/artist/" + artistId,
-        {
-          method: "GET",
-          headers,
-        }
-      );
+  useEffect(() => {
+    fetchArtistData(params.id);
+  }, [params.id]);
 
-      if (response.ok) {
-        let artist = await response.json();
-        this.setState(
-          {
-            artist,
-          },
-          async () => {
-            let tracksResponse = await fetch(
-              "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
-                artist.name,
-              {
-                method: "GET",
-                headers,
-              }
-            );
+  return (
+    <div className="col-12 col-md-9 offset-md-3 mainPage">
+      <Row className="mb-3">
+        <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
+          <div>TRENDING</div>
+          <div>PODCAST</div>
+          <div>MOODS AND GENRES</div>
+          <div>NEW RELEASES</div>
+          <div>DISCOVER</div>
+        </div>
+      </Row>
 
-            if (tracksResponse.ok) {
-              let tracklist = await tracksResponse.json();
-              this.setState({ songs: tracklist.data });
-            }
-          }
-        );
-      }
-    } catch (exception) {
-      console.log(exception);
-    }
-  };
-
-  render() {
-    return (
-      <div className="col-12 col-md-9 offset-md-3 mainPage">
-        <Row className="mb-3">
-          <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
-            <div>TRENDING</div>
-            <div>PODCAST</div>
-            <div>MOODS AND GENRES</div>
-            <div>NEW RELEASES</div>
-            <div>DISCOVER</div>
-          </div>
-        </Row>
-
+      <>
         <Row>
           <div className="col-12 col-md-10 col-lg-10 mt-5">
-            <h2 className="titleMain">{this.state.artist.name}</h2>
-            <div id="followers">{this.state.artist.nb_fan} followers</div>
+            <h2 className="titleMain">{artist.name}</h2>
+            <div id="followers">{artist.nb_fan} followers</div>
             <div
               className="d-flex justify-content-center"
               id="button-container"
@@ -96,16 +67,16 @@ class Artist extends React.Component {
             </div>
             <div className="pt-5 mb-5">
               <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
-                {this.state.songs?.map((song) => (
-                  <AlbumCard song={song} key={song.id} />
+                {songs?.map((song, i) => (
+                  <AlbumCard song={song} key={i} />
                 ))}
               </Row>
             </div>
           </Col>
         </Row>
-      </div>
-    );
-  }
-}
+      </>
+    </div>
+  );
+};
 
-export default Artist;
+export default connect(mapStateToProps, mapDispatchToProps)(Artist);
