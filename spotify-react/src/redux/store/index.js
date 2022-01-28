@@ -1,14 +1,37 @@
-import { createStore } from "redux";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+"
 
 export const initialState = {
-  songs: {
-    elements: [],
+  likes: {
+    likeSongs: [],
+  },
+  home: {
+    content: {
+      hipHop: [],
+      pop: [],
+      rock: [],
+    },
+  },
+  artists: {
+    artistsSongs: [],
+  },
+  albums: {
+    albumsSongs: [],
   },
 };
 
-const composeEnhancers =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__ || compose;
 
-const mainReducer = (state = initialState, action) => {
+const mainReducer = combineReducers({
+  albums: albumsReducer,
+  artists: artistsReducer,
+  likes: likesReducer,
+  home: homeReducer,
+});
 
-}
+export default createStore(
+  mainReducer,
+  initialState,
+  composeEnhancers(applyMiddleware(thunk))
+);
