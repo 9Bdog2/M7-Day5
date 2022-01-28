@@ -1,7 +1,7 @@
 export const SET_SONGS = "SET_SONGS";
 
 export const getSongsAction = (artist) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
       let response = await fetch(
         `https://strive-proxy.herokuapp.com/https://api.deezer.com/search?q=${artist}`,
@@ -24,6 +24,8 @@ export const getSongsAction = (artist) => {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      console.log(getState());
     }
   };
 };
