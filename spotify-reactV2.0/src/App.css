@@ -1,0 +1,169 @@
+.player-wrap {
+    width: 100vw;
+    height: 90px;
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(24,24,24);
+    z-index: 2;
+}
+
+.sidebar-wrap {
+    height: calc(100vh - 90px);
+    width: 240px;
+    background-color: rgb(0,0,0);
+    position: fixed;
+    left: 0;
+    z-index: 2;
+}
+
+.home-wrap {
+    padding-left: 25px;
+    padding-right: 25px;
+    width: calc(100vw - 240px);
+    height: calc(100vh - 90px);
+    position: absolute;
+    left: 240px;
+    background: rgb(3,0,46);
+    background: linear-gradient(0deg, rgba(3,0,46,1) 0%, rgba(0,52,6,1) 100%);
+}
+
+.album-wrap {
+    padding-left: 25px;
+    padding-right: 25px;
+    width: calc(100vw - 240px);
+    height: calc(100vh - 90px);
+    position: absolute;
+    left: 240px;
+    background: rgb(3,0,46);
+    background: linear-gradient(0deg, rgba(3,0,46,1) 0%, rgba(0,52,6,1) 100%);
+    display: flex;
+    flex-direction: row;
+}
+
+.coverPic {
+    height: 180px;
+    width: 180px;
+    object-fit: cover;
+}
+
+h3 {
+    color: white;
+}
+
+.cards-wrap {
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-wrap {
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.song-wrap {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    width: 60%;
+    justify-content: flex-start;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.duration {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.album-left-info {
+    width: 40%;
+    justify-content: center;
+}
+
+.album-right-info {
+    width: 60%;
+}
+
+.side-bar {
+    background-color: black;
+    height: 100vh;
+    display: inline-block;
+    color: rgb(134, 136, 148);
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    min-width: 240px;
+    transition: all 0.5s linear;
+  }
+  
+  @media (max-width: 1000px){
+    .side-bar {display: none};
+  }
+  
+  .sidebar-list {
+    height: 260px;
+    font-weight: 400;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  
+  ::-webkit-scrollbar {
+    height: 0px;
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #161616;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  .home,
+  .search,
+  .library,
+  .square,
+  .liked-songs {
+    font-size: 15px;
+    align-items: center;
+  }
+  
+  .home {
+    color: white;
+    background-color: rgb(40, 40, 40);
+    border-radius: 4px;
+  }
+  
+  .bi-list {
+    transform: rotate(90deg);
+  }
+  
+  .bi-house-door-fill,
+  .bi-search,
+  .bi-list,
+  .bi-plus-square-fill,
+  .bi-heart-fill {
+    font-size: 20px;
+  }
