@@ -46,11 +46,7 @@ export const getArtistSongs = (artistId) => {
     }
   };
 };
-export const likeUnlike = (element, dispatchName) => {
-  return async (dispatch) => {
-    dispatch({
-      type: dispatchName,
-      payload: element,
-    });
-  };
-};
+export const likeUnlike = (song) => ({
+  type: "TOGGLE_LIKE",
+  payload: song,
+});
