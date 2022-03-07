@@ -2,15 +2,18 @@ import React from "react";
 import AlbumCard from "./AlbumCard";
 import { Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
-import { getSongsAction } from "../redux/actions";
+import { getSongs } from "../redux/actions";
 
 const mapStateToProps = (state) => ({
   home: state.home.content,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getSongs: (artist) => dispatch(getSongsAction(artist)),
+
+  getSongs: (artist) => dispatch(getSongs(artist)),
 });
+
+
 class Home extends React.Component {
   state = {
     rockSongs: [],
@@ -39,46 +42,48 @@ class Home extends React.Component {
 
   hipHopArtists = ["eminem", "snoopdogg", "lilwayne", "drake", "kanyewest"];
 
-  /* handleArtist = async (artistName, category) => {
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
-          artistName,
-        {
-          method: "GET",
-          headers: new Headers({
-            "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-            "X-RapidAPI-Key":
-              "9d408f0366mshab3b0fd8e5ecdf7p1b09f2jsne682a1797fa0",
-          }),
-        }
-      );
-      let result = await response.json();
-      let songInfo = result.data;
-      this.setState({
-        [category]: [...this.state[category], songInfo[0]],
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }; */
+  // handleArtist = async (artistName, category) => {
+  //   try {
+  //     let response = await fetch(
+  //       "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
+  //         artistName,
+  //       {
+  //         method: "GET",
+  //         headers: new Headers({
+  //           "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+  //           "X-RapidAPI-Key":
+  //             "9d408f0366mshab3b0fd8e5ecdf7p1b09f2jsne682a1797fa0",
+  //         }),
+  //       }
+  //     );
+  //     let result = await response.json();
+  //     let songInfo = result.data;
+  //     this.setState({
+  //       [category]: [...this.state[category], songInfo[0]],
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  componentDidMount = async (artist) => {
-    this.props.getSongs(artist);
-    console.log(this.props.home);
+  componentDidMount = async () => {
+    this.props.getSongs();
+    
+
     /* let rockRandomArtists = [];
     let popRandomArtists = [];
     let hipHopRandomArtists = [];
+ */
 
-    while (rockRandomArtists.length < 4) {
+    /* while (rockRandomArtists.length < 4) {
       let artist =
-        this.props.home[Math.floor(Math.random() * this.props.home.length)];
+        this.rockArtists[Math.floor(Math.random() * this.rockArtists.length)];
       if (!rockRandomArtists.includes(artist)) {
         rockRandomArtists.push(artist);
       }
-    } */
+    }
 
-    /* while (popRandomArtists.length < 4) {
+    while (popRandomArtists.length < 4) {
       let artist =
         this.popArtists[Math.floor(Math.random() * this.popArtists.length)];
       if (!popRandomArtists.includes(artist)) {
@@ -94,12 +99,12 @@ class Home extends React.Component {
       if (!hipHopRandomArtists.includes(artist)) {
         hipHopRandomArtists.push(artist);
       }
-    } */
+    }
 
-    /* for (let j = 0; j < rockRandomArtists.length; j++)
-      await this.props.home(rockRandomArtists[j], "rockSongs"); */
+    for (let j = 0; j < rockRandomArtists.length; j++)
+      await this.handleArtist(rockRandomArtists[j], "rockSongs");
 
-    /* for (let k = 0; k < popRandomArtists.length; k++)
+    for (let k = 0; k < popRandomArtists.length; k++)
       await this.handleArtist(popRandomArtists[k], "popSongs");
 
     for (let l = 0; l < hipHopRandomArtists.length; l++)
@@ -124,7 +129,7 @@ class Home extends React.Component {
               <div id="searchResults">
                 <h2>Search Results</h2>
                 <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
-                  {this.props.searchResults.map((song) => (
+                  {this.props.home.map((song) => (
                     <AlbumCard song={song} key={song.id} />
                   ))}
                 </Row>
@@ -142,7 +147,7 @@ class Home extends React.Component {
                     className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
                     id="rockSection"
                   >
-                    {this.state.rockSongs.map((song) => (
+                    {this.state.home.map((song) => (
                       <AlbumCard song={song} key={song?.id} />
                     ))}
                   </Row>
@@ -157,8 +162,8 @@ class Home extends React.Component {
                     className="row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
                     id="popSection"
                   >
-                    {this.state.popSongs.map((song) => (
-                      <AlbumCard song={song} key={song?.id} />
+                    {/* {this.state.p.map((song) => (
+                      <AlbumCard song={song} key={song?.id} /> */}
                     ))}
                   </Row>
                 </div>
