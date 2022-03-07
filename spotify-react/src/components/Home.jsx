@@ -9,7 +9,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   getSongs: (artist) => dispatch(getSongs(artist)),
 });
 

@@ -33,10 +33,18 @@ const mainReducer = combineReducers({
   home: homeReducer,
 });
 
+<<<<<<< Updated upstream
 const configureStore = createStore(
+=======
+ const configureStore = createStore(
+>>>>>>> Stashed changes
   mainReducer,
   initialState,
   composeEnhancers(applyMiddleware(thunk))
 );
 
+<<<<<<< Updated upstream
 export default configureStore;
+=======
+export default configureStore;
+>>>>>>> Stashed changes
